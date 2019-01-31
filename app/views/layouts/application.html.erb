@@ -7,9 +7,34 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
   </head>
 
+<header class="navbar">
+	<a href="https://monjibram.com" target="_blank" class="navbar-site-emblem">
+		<i class="fa fa-behance-square fa-lg"></i>nji
+	</a>
+	<div class="dropdown">
+		<div class="fa fa-bars fa-lg dropdown-nav"></div>
+		<ul class="dropdown-items">
+			<li class="drop-btn"><%= link_to "Matchups",  matchups_path %></li>
+			<li class="drop-btn"><%= link_to "Results",   results_path  %></li>
+		</ul>
+	</div>
+</header>
+
+
   <body>
-    <%= yield %>
+    <div class="bgimg-1">
+      <%= yield %>
+    </div>
   </body>
+
+  <footer class="footer">
+    Here's some other stuff I didn't do yet.
+  </footer>
 </html>

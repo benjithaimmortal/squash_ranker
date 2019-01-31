@@ -1,3 +1,105 @@
 // Place all the styles related to the DynamicPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+}
+
+a {
+  &:link {
+    color: #ececec;
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+  &:visited {
+    color: #ececec;
+  }
+}
+
+ul {
+	list-style: none inside;
+	padding: 0;
+}
+
+/* header */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  font-family: "Helvetica", sans-serif;
+  color: #E0E0E0;
+  background: #777;
+  z-index: 1;
+}
+.navbar-site-emblem {
+  float: left;
+  margin-right: auto;
+  color: #E0E0E0;
+  padding: 15px 1rem;
+}
+/* header drop-down menu */
+.dropdown {
+  float: right;
+  background-color: none;
+  border-radius: 10px;
+  padding: 15px 15px;
+}
+.dropdown:hover .dropdown-nav {
+  color: white;
+  padding-bottom: 10px;
+}
+.dropdown:hover .dropdown-items {
+  display: inline-block;
+  margin: 0 auto;
+}
+.dropdown-items {
+  display: none;
+  right: 0;
+  font-size: 1.1em;
+  background: #777;
+  position: absolute;
+  z-index: 1;
+}
+.drop-btn {
+  padding: 5px;
+  &:hover {
+    background: #263238;
+  }
+}
+
+.bgimg-1 {
+  margin-top: 50px;
+  margin: 5%;
+  padding: 5%;
+  display: block;
+  background: #263238;
+  min-height: 100%;
+}
+
+.splitter, .footer {
+  padding: 50px 80px;
+}
+
+.splitter {
+  color: #777;
+  background-color: whitesmoke;
+  text-align: center;
+}
+
+.footer {
+  position: relative;
+  color: #ddd;
+  text-align: right;
+  background-color: #282E34;
+}
