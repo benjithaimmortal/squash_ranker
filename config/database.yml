@@ -52,3 +52,10 @@ test:
   username: benji
   password: benji1
   timeout: 5000
+
+
+production:
+  adapter: postgresql
+  database: my_database_production
+  pool: 5
+  timeout: 5000
