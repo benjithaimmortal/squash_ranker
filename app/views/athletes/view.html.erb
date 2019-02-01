@@ -2,8 +2,28 @@
 <h1>Athletes#view</h1>
 <p>Find me in app/views/athletes/view.html.erb</p>
 
-
-
 <div class="bgimg-1">
-Go <%= link_to "Home", root_path %>
+  <table>
+    <% @athletes.each do |athlete| %>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Level</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= athlete.name %></td>
+          <td><%= athlete.level %></td>
+          <td><%= athlete.rating %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table> 
+</div>
+<div class="bgimg-1">
+  Add a <%= link_to "new athlete", create_path %>.
+  </br>
+  Go <%= link_to "Home", root_path %>
 </div>

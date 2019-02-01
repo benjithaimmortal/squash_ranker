@@ -1,8 +1,24 @@
 <% provide(:title, "Create Athletes") %>
 <h1>Athletes#create</h1>
-<p>Find me in app/views/athletes/create.html.erb</p>
+<p>PLEASE DO NOT USE THIS YET</p>
 
 
 <div class="bgimg-1">
-Go <%= link_to "Home", root_path %>
+  <%= form_for(@athlete) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    </br>
+
+    <%= f.label :level %>
+    <%= f.select :level, [1, 2, 3, 4, 5] %>
+
+    </br>
+
+    <%= f.submit "Create a new athlete", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<div class="bgimg-1">
+  Go <%= link_to "home", root_path %>.
 </div>

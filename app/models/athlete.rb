@@ -1,6 +1,6 @@
 class Athlete < ApplicationRecord
 
-  before_save { self.name = name.upcase }
+  before_save { name.upcase! }
 
   validates :name,   presence: true,
     uniqueness: { case_sensitive: false }
