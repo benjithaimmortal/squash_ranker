@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'athletes/index'
 # Homepage
   root              'dynamic_pages#home'
 

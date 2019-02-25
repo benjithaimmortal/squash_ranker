@@ -17,7 +17,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: postgres
+  database: squash_development
   pool: 5
   username: benji
   password: benji1
@@ -47,7 +47,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: postgres_test
+  database: squash_test
   pool: 5
   username: benji
   password: benji1
