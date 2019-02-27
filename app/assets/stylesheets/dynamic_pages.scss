@@ -12,6 +12,21 @@ body, html {
   color: #777;
 }
 
+.alert {
+  border-style: dotted;
+  border-width: 2px;
+}
+
+.alert-success {
+  border: #263238;
+  color: whitesmoke;
+}
+
+.alert-error {
+  border: red;
+  color: whitesmoke;
+}
+
 a {
   &:link {
     color: #ececec;
@@ -83,7 +98,6 @@ ul {
   padding: 5%;
   display: block;
   background: #263238;
-  // min-height: 30%;
 }
 
 .splitter, .footer {
