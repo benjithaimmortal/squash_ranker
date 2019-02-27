@@ -1,2 +1,34 @@
 <h1>Athletes#index</h1>
 <p>Find me in app/views/athletes/index.html.erb</p>
+
+
+
+<div class="bgimg-1">
+  <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Level</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>      
+        <% @athletes.each do |a| %>
+        <tr>
+          <td><%= a.name %></td>
+          <td><%= a.level %></td>
+          <td><%= a.rating %></td>          
+          <td><%= link_to 'View', show_path %>
+          <td><%= link_to 'Edit', '#' %>
+        </tr>
+        <% end %>
+      </tbody>
+  </table> 
+</div>
+
+
+<div class="bgimg-1">
+  Add a <%= link_to "new athlete", create_path %>.
+  </br>
+  Go <%= link_to "Home", root_path %>
+</div>

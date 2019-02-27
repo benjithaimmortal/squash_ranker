@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
-  get 'athletes/index'
+
 # Homepage
   root              'dynamic_pages#home'
 
 # Create and view Athletes
+  get 'index'    => 'athletes#index'
   get 'create'   => 'athletes#create'
-  get 'view'     => 'athletes#view'
+  get 'show'     => 'athletes#show'
+  get 'edit'     => 'athletes#edit'
 
 # Choose from matchups, view resulting data
   get 'matchups' => 'dynamic_pages#matchups'

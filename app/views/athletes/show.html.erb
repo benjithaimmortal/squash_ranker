@@ -1,0 +1,17 @@
+<% provide(:title, "View All Athletes") %>
+<h1>Athletes#show</h1>
+<p>Find me in app/views/athletes/show.html.erb</p>
+
+<div class="bgimg-1">
+  <strong>Name:</strong>
+  <%= @athlete.name %>
+  <br>
+  <strong>Level:</strong>
+  <%= @athlete.level %>
+</div>
+
+<div class="bgimg-1">
+  Add a <%= link_to "new athlete", create_path %>.
+  </br>
+  Go <%= link_to "Home", root_path %>
+</div>

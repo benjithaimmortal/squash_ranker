@@ -1,0 +1,13 @@
+<%= form_with model: @athlete, local: true do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  </br>
+
+  <%= f.label :level %>
+  <%= f.select :level, [1, 2, 3, 4, 5] %>
+
+  </br>
+
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>
