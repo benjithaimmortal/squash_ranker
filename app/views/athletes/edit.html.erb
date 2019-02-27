@@ -1,14 +1,16 @@
-<% provide(:title, "Edit Athlete") %>
+<% provide(:title, "Edit") %>
 <h1>Athletes#edit</h1>
 <p>PLEASE DO NOT USE THIS YET</p>
 
 
 <div class="bgimg-1">
+  <strong>Update the athlete with the form below:</strong>
+  <br>
   <%= render 'form' %>
 </div>
 
 <div class="bgimg-1">
-  <%= link_to "Go back", show_path %> to existing athletes.
-  </br>
+  <%= link_to "Go back", index_path %> to existing athletes.
+  <br>
   Go <%= link_to "home", root_path %>.
 </div>

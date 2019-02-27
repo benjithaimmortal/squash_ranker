@@ -1,7 +1,5 @@
-<h1>Athletes#index</h1>
-<p>Find me in app/views/athletes/index.html.erb</p>
-
-
+<% provide(:title, "Athletes") %>
+<h1>ADMINISTRATOR USE ONLY</h1>
 
 <div class="bgimg-1">
   <table>
@@ -17,9 +15,12 @@
         <tr>
           <td><%= a.name %></td>
           <td><%= a.level %></td>
-          <td><%= a.rating %></td>          
-          <td><%= link_to 'View', show_path %>
-          <td><%= link_to 'Edit', '#' %>
+          <td><%= a.rating %></td>
+          <td><%= link_to 'View', athlete_path(a) %>
+          <td><%= link_to 'Edit', edit_athlete_path(a) %>
+          <td><%= link_to "Delete", athlete_path(a),
+                    method: :delete,
+                    data: { confirm: 'Are you sure? This will reset the player\'s rank.' } %>
         </tr>
         <% end %>
       </tbody>

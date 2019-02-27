@@ -4,14 +4,16 @@ Rails.application.routes.draw do
 # Homepage
   root              'dynamic_pages#home'
 
-# Create and view Athletes
+# CRUD Athletes
   get 'index'    => 'athletes#index'
   get 'create'   => 'athletes#create'
   get 'show'     => 'athletes#show'
   get 'edit'     => 'athletes#edit'
 
-# Choose from matchups, view resulting data
-  get 'matchups' => 'dynamic_pages#matchups'
+# Matchup!
+  get 'matchup' => 'athletes#matchup'
+
+# Old
   get 'results'  => 'dynamic_pages#results'
 
 # Enable resources for the Athletes in the database

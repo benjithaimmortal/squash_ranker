@@ -3,15 +3,13 @@
 <html>
   <body>
     <p>
-      Your expertise is required! Please vote for a few <%= link_to "matchups", matchups_path %>.
-      
-      </br></br>
-
-      Once you're done, you can see your own ranking in <%= link_to "results",  results_path  %>.
+      Your expertise is required! Please vote for a few <%= link_to "matchups", matchup_path %>.
+      <br><br>
+      Once you're done, you can see your own ranking in <%= link_to "the table",  index_path  %>.
     </p>
 
     <p>
-      Admin, <%= link_to "create", create_path %> new athletes and <%= link_to "view", show_path %> the database.
+      Admin, <%= link_to "create", create_path %> new athletes.
     </p>
   </body>
 </html>

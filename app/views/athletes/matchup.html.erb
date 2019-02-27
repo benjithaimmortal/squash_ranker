@@ -1,0 +1,30 @@
+<% provide(:title, "Matchup!") %>
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>
+      CLAYTALITY!
+    </h1>
+
+    <h2>
+      Who wins?
+      <br>
+
+      <strong>
+      <%= link_to @player1.name, '#' %>
+       or 
+      <%= link_to @player2.name, '#' %>?
+      </strong>
+    </h2>
+
+    <h3>
+      <%= link_to 'Tossup', '#' %>
+    </h3>
+
+    
+    <div>
+      Go <%= link_to "Home", root_path %>
+    </div>
+
+  </body>
+</html>

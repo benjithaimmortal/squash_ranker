@@ -1,16 +1,25 @@
-<% provide(:title, "View All Athletes") %>
-<h1>Athletes#show</h1>
-<p>Find me in app/views/athletes/show.html.erb</p>
-
+<% provide(:title, "View #{@athlete.name}") %>
 <div class="bgimg-1">
-  <strong>Name:</strong>
-  <%= @athlete.name %>
+  <h1>
+    Name: <%= @athlete.name %>
+  </h1>
+  <h3>
+    Level: <%= @athlete.level %>
+  </h3>
+  <h3>
+    Rating: <%= @athlete.rating %>
+  </h3>
   <br>
-  <strong>Level:</strong>
-  <%= @athlete.level %>
+  <%= link_to "Edit User", edit_athlete_path(@athlete.id) %>
+  <br>
+  <%= link_to "Delete User", athlete_path(@athlete.id),
+          method: :delete,
+          data: { confirm: 'Are you sure? This will reset the player\'s rank.' } %>
 </div>
 
 <div class="bgimg-1">
+  <%= link_to "View all", index_path %> existing athletes.
+  <br>
   Add a <%= link_to "new athlete", create_path %>.
   </br>
   Go <%= link_to "Home", root_path %>
