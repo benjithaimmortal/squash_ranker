@@ -4,6 +4,12 @@
     <title><%= yield(:title) %> | Squash Ranker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+        <!-- seo meta -->
+    <meta name="description"             content="We buid the matchup, you choose who will win!">
+    
+    <!-- force mobile to use mobile viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>

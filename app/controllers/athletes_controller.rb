@@ -33,7 +33,7 @@ class AthletesController < ApplicationController
 
   def create
     @athlete = Athlete.new(athlete_params)
-    @athlete.rating = Elo::Player.new(:rating => 1000)
+    @athlete.rating = Elo::Player.new
 
     if @athlete.save
       flash.now[:success] = "Player added successfully"
