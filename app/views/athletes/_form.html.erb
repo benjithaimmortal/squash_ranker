@@ -1,13 +1,23 @@
-<%= form_with model: @athlete, local: true do |f| %>
+<%= form_for @athlete, local: true do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 
-  </br>
+  <br>
 
   <%= f.label :level %>
   <%= f.select :level, [1, 2, 3, 4, 5] %>
 
-  </br>
+  <br>
+
+  <%= f.label :positive %>
+  <%= f.text_field :positive %>
+
+  <br>
+
+  <%= f.label :negative %>
+  <%= f.text_field :negative %>
+
+  <br>
 
   <%= f.submit class: "btn btn-primary" %>
 <% end %>

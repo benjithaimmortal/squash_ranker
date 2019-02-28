@@ -6,9 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Athlete.create!(name:"KOSTENBADER, BENJI",
-                level: 4,
-                rating: 0)
+# Template:
+# Athlete.create!(name:     "string",
+#                 level:    integer,
+#                 positive: integer,
+#                 negative: integer)
 
 # 30.times do |n|
 #   name = (0...8).map { (65 + rand(26)).chr }.join
@@ -17,3 +19,50 @@ Athlete.create!(name:"KOSTENBADER, BENJI",
 #                   level: level,
 #                   rating: 0)
 # end
+
+seed_list = [
+  [ "LEE, DS", 1 ],
+  [ "MACARTHUR, DAVID", 2 ],
+  [ "HWANG, KWANG", 3 ],
+  [ "KIM, KEVIN", 4 ],
+  [ "LEROI, FLORENT", 5 ],
+  [ "AHN, JASON", 1 ],
+  [ "RUESCHE, FREDERIC", 2 ],
+  [ "EUH, JASON", 3 ],
+  [ "KIM, BS", 4 ],
+  [ "HAHM, KEVIN", 5 ],
+  [ "CATHERINE, HUGO", 1 ],
+  [ "CHANG, HAROLD", 2 ],
+  [ "LEE, VIV", 3 ],
+  [ "CHANG, JOSEPH", 4 ],
+  [ "KIM, HAESUNG", 5 ],
+  [ "YOON, KEVIN", 1  ],
+  [ "DUDLEY, GORDON", 2 ],
+  [ "CHANG, ANTHONY", 3 ],
+  [ "BUDDEN, MATT", 4 ],
+  [ "SUH, MARK", 5 ],
+  [ "JOHNSTONE, GRAHAM", 1 ],
+  [ "CHUN, JOHAN", 2 ],
+  [ "ROSSO, PABLO", 3 ],
+  [ "RA, KYUNGSOO", 4 ],
+  [ "CHUNG, MARK", 5 ],
+  [ "DEBOER, ARTHUR", 1 ],
+  [ "AHN, EDWARD", 2 ],
+  [ "LEHMAN, THOMAS", 3 ],
+  [ "KOSTENBADER, BENJI", 4 ],
+  [ "HWANG, JOSHUA", 5 ],
+  [ "JEONG, YOUNGSU", 1 ],
+  [ "LIM, LOUIS", 2 ],
+  [ "LIM, SAM", 3 ],
+  [ "HOXER, MARTIN", 4 ],
+  [ "SUNG, CHAN", 5 ],
+  [ "SALINAS, MARK", 1 ],
+  [ "JUNG, LEO", 2 ],
+  [ "AHN, DAVID", 3 ],
+  [ "ADRIAEN, MICHAEL", 4 ],
+  [ "CHANG, ALEX", 5 ]
+]
+
+seed_list.each do | name, level |
+  Athlete.create!( name: name, level: level, positive: 0, negative: 0 )
+end

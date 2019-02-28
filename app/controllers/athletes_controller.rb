@@ -1,23 +1,11 @@
 class AthletesController < ApplicationController
   http_basic_authenticate_with name: "admin", password: "squashrulez",
       except: [:index, :show, :matchup]
-
-
-  Elo.configure do |config|
-
-    # Every player starts with a rating of 1000
-    config.default_rating = 1000
   
-    # A player is considered a pro, when he/she has more than 2400 points
-    config.pro_rating_boundry = 2400
-  
-    # A player is considered a new, when he/she has played less than 30 games
-    config.starter_boundry = 30
-  
-  end
 
   def index
-    @athletes = Athlete.all
+    @athletes = Athlete.order(:rating, :name).all
+    @athletes.each { |a| rate(a) }
   end
 
   #check out that PG!
@@ -33,7 +21,10 @@ class AthletesController < ApplicationController
 
   def create
     @athlete = Athlete.new(athlete_params)
-    @athlete.rating = Elo::Player.new
+    @athlete.positive ||= 0
+    @athlete.negative ||= 0
+    @athlete.rating = rate(@athlete)
+
 
     if @athlete.save
       flash.now[:success] = "Player added successfully"
@@ -50,6 +41,7 @@ class AthletesController < ApplicationController
 
   def update
     @athlete = Athlete.find(params[:id])
+    @athlete.rating = rate(@athlete)
    
     if @athlete.update(athlete_params)
       redirect_to @athlete
@@ -71,6 +63,16 @@ class AthletesController < ApplicationController
   private
 
   def athlete_params
-    params.require(:athlete).permit(:name, :level) if params[:athlete]
+    params.require(:athlete).permit(:name, :level, :positive, :negative, :rating) if params[:athlete]
+  end
+
+
+  #upvotes/downvotes rating system
+  def rate(athlete)
+    positive = athlete.positive
+    negative = athlete.negative
+    athlete.rating = (positive - negative)
+    
+    # ((positive + 1.9208) / (positive + negative) - 1.96 * Math.sqrt((positive * negative) / (positive + negative) + 0.9604) / (positive + negative)) / (1 + 3.8416 / (positive + negative))
   end
 end

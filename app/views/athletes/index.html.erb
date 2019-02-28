@@ -1,5 +1,5 @@
 <% provide(:title, "Athletes") %>
-<h1>ADMINISTRATOR USE ONLY</h1>
+<h1>ROSTER AND RESULTS</h1>
 
 <div class="bgimg-1">
   <table>
@@ -8,6 +8,8 @@
           <th>Name</th>
           <th>Level</th>
           <th>Rating</th>
+          <td>Positive</td>
+          <td>Negative</td>
         </tr>
       </thead>
       <tbody>      
@@ -16,6 +18,8 @@
           <td><%= a.name %></td>
           <td><%= a.level %></td>
           <td><%= a.rating %></td>
+          <td><%= a.positive %></td>
+          <td><%= a.negative %></td>
           <td><%= link_to 'View', athlete_path(a) %>
           <td><%= link_to 'Edit', edit_athlete_path(a) %>
           <td><%= link_to "Delete", athlete_path(a),
@@ -25,11 +29,12 @@
         <% end %>
       </tbody>
   </table> 
-</div>
-
-
-<div class="bgimg-1">
+  <h2>
+    Judge more <%= link_to "matchups", matchup_path %>.
+  </h2>
+  <br>
   Add a <%= link_to "new athlete", create_path %>.
-  </br>
+  <br>
   Go <%= link_to "Home", root_path %>
+
 </div>
