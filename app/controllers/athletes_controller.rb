@@ -1,18 +1,30 @@
 class AthletesController < ApplicationController
+  # makes sort methods accessible for athletes_helper
+  helper_method :sort_column, :sort_direction
+
+  # creates a generic admin account for managing the database from the app
   http_basic_authenticate_with name: "admin", password: "squashrulez",
       except: [:index, :show, :matchup]
-  
 
   def index
-    @athletes = Athlete.order(:rating, :name).all
+    @athletes = Athlete.order(sort_column + " " + sort_direction)
+  
+    # re-runs the rate method to calculate athlete rating
     @athletes.each { |a| rate(a) }
   end
 
   #check out that PG!
   def matchup
+    # choose two athletes at random
     @athletes = Athlete.order("RANDOM()").limit(2)
     @player1 = @athletes[0]
     @player2 = @athletes[1]
+
+    if @athlete.update(athlete_params)
+      redirect_back(index_path)
+    else
+      render 'matchup'
+    end
   end
 
   def show
@@ -23,8 +35,6 @@ class AthletesController < ApplicationController
     @athlete = Athlete.new(athlete_params)
     @athlete.positive ||= 0
     @athlete.negative ||= 0
-    @athlete.rating = rate(@athlete)
-
 
     if @athlete.save
       flash.now[:success] = "Player added successfully"
@@ -41,6 +51,8 @@ class AthletesController < ApplicationController
 
   def update
     @athlete = Athlete.find(params[:id])
+
+    # update the rating with edited positive/negative score
     @athlete.rating = rate(@athlete)
    
     if @athlete.update(athlete_params)
@@ -63,7 +75,7 @@ class AthletesController < ApplicationController
   private
 
   def athlete_params
-    params.require(:athlete).permit(:name, :level, :positive, :negative, :rating) if params[:athlete]
+    params.require(:athlete).permit(:name, :level, :positive, :negative) if params[:athlete]
   end
 
 
@@ -74,5 +86,13 @@ class AthletesController < ApplicationController
     athlete.rating = (positive - negative)
     
     # ((positive + 1.9208) / (positive + negative) - 1.96 * Math.sqrt((positive * negative) / (positive + negative) + 0.9604) / (positive + negative)) / (1 + 3.8416 / (positive + negative))
+  end
+
+  def sort_column
+    Athlete.column_names.include?(params[:sort]) ? params[:sort] : "rating"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

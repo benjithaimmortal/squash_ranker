@@ -5,11 +5,10 @@
   <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Level</th>
-          <th>Rating</th>
-          <td>Positive</td>
-          <td>Negative</td>
+          <th><%= sortable "name" %></th>
+          <th><%= sortable "level" %></th>
+          <th><%= sortable "rating" %></th>
+          <td>Votes</td>
         </tr>
       </thead>
       <tbody>      
@@ -19,7 +18,6 @@
           <td><%= a.level %></td>
           <td><%= a.rating %></td>
           <td><%= a.positive %></td>
-          <td><%= a.negative %></td>
           <td><%= link_to 'View', athlete_path(a) %>
           <td><%= link_to 'Edit', edit_athlete_path(a) %>
           <td><%= link_to "Delete", athlete_path(a),
