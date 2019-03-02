@@ -5,6 +5,11 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
 
+
+$nav_color: rgba(20, 26, 30, 0.65);
+$nav_text_color: white;
+$nav_font: "Lato", "Helvetica", sans-serif;
+
 body, html {
   height: 100%;
   margin: 0;
@@ -47,70 +52,118 @@ ul {
 
 /* header */
 .navbar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  height: 50px;
+  height: 100px;
   width: 100%;
-  font-family: "Helvetica", sans-serif;
-  color: #E0E0E0;
-  background: #777;
+  font-family: $nav_font;
+  color: $nav_text_color;
+  background: $nav_color;
   z-index: 1;
 }
 .navbar-site-emblem {
-  float: left;
   margin-right: auto;
-  color: #E0E0E0;
-  padding: 15px 1rem;
-}
-/* header drop-down menu */
-.dropdown {
-  float: right;
-  background-color: none;
-  border-radius: 10px;
-  padding: 15px 15px;
-}
-.dropdown:hover .dropdown-nav {
-  color: white;
-  padding-bottom: 10px;
-}
-.dropdown:hover .dropdown-items {
-  display: inline-block;
-  margin: 0 auto;
-}
-.dropdown-items {
-  display: none;
-  right: 0;
-  font-size: 1.1em;
-  background: #777;
-  position: absolute;
-  z-index: 1;
-}
-.drop-btn {
-  padding: 5px;
-  &:hover {
-    background: #263238;
+  font-family: Arial, Helvetica, sans-serif;
+  a:link a:visited {
+    color: $nav_text_color;
   }
 }
 
-.bgimg-1 {
-  margin: 5%;
+/* nav tablet and screen head and content */ 
+@media (min-width: 800px) {
+  .dropdown {
+    display: none;
+  }
+  
+  .navbar-site-emblem {
+  float: left;
+  font-size: 30px;
+  padding: 20px 2rem;
+  }
+
+  .big-nav {
+    display: flex;
+    margin-top: 35px;
+    justify-content: center;
+  }
+
+  .nav-links {
+    padding: 0 30px;
+  }
+}
+
+/* nav mobile device header drop-down menu */
+@media (max-width: 800px) {
+  .nav-links {
+    display: none;
+  }
+
+  .navbar-site-emblem {
+    float: right;
+    font-size: 25px;
+    padding: 25px 1rem;
+  }
+  .dropdown {
+    float: left;
+    background-color: none;
+    border-radius: 10px;
+    font-size: 25px;
+    padding: 26px;
+  }
+  .dropdown:hover .dropdown-nav {
+    color: white;
+    padding-bottom: 10px;
+  }
+  .dropdown:hover .dropdown-items {
+    display: inline-block;
+  }
+  .dropdown-items {
+    display: none;
+    margin-top: 27px;
+    left: 0;
+    font-size: 1.1rem;
+    background: $nav_color;
+    position: absolute;
+    z-index: 1;
+  }
+  .drop-btn {
+    right: 10;
+    padding: 5px;
+  }
+}
+
+// every page
+.content {
+  margin: 3%;
+  margin-top: calc(3% + 100px);
   padding: 5%;
-  display: block;
+  min-height: calc(100% - 200px);
   background: #263238;
 }
 
-.splitter, .footer {
-  padding: 50px 80px;
-}
-
-.splitter {
-  color: #777;
-  background-color: whitesmoke;
+// matchups
+.matchup-tray {
+  display: inline-block;
   text-align: center;
+  padding: 5%;
+  width: 35%;
 }
 
+// player info display
+.show-tray {
+  display: inline-block;
+  text-align: left;
+  padding: 0 15px;
+  border-style: dotted;
+  margin-right: 10px;
+  max-width: 35%;
+}
+
+// footer
 .footer {
+  padding: 0 80px;
+  height: 100px;
   position: relative;
   color: #ddd;
   text-align: right;

@@ -7,13 +7,19 @@ module AthletesHelper
     link_to title, {:sort => column, :direction => direction}
   end
 
-  # Raises positive rating by 1
-  def rating_up(athlete)
-    athlete.positive += 1
-  end
+  # # Raises positive rating by 1
+  # def rating_up(athlete, name = nil)
+  #   name ||= name.titleize
+  #   athlete.increment_counter(:positive)
+  #   athlete.save
+  # end
 
   # Raises negative rating by 1
-  def rating_down(athlete)
-    athlete.negative += 1
-  end
+  # def rating_down(athletes, name = nil)
+  #   name ||= name.titleize
+  #   athletes.each do |a|
+  #     a.increment(:negative)
+  #     a.save
+  #   end
+  # end
 end

@@ -17,8 +17,11 @@ Rails.application.routes.draw do
   get 'results'  => 'dynamic_pages#results'
 
 # Enable resources for the Athletes in the database
-  resources :athletes
-
+  resources :athletes do
+    member do
+      put :rating_up
+    end
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

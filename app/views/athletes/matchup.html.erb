@@ -1,34 +1,17 @@
 <% provide(:title, "Matchup!") %>
 <!DOCTYPE html>
-<html>
-  <body>
-    <h1>
-      CLAYTALITY!
-    </h1>
-    <h2>
-      Who wins?
-      <br>
 
-      <strong>
-      <%= link_to @player1.name, '#' %>
-       or 
-      <%= link_to @player2.name, '#' %>?
-      </strong>
-    </h2>
+<h2>
+  Who wins?
+  <br>
+</h2>
+<% @athletes.each do |a| %>
+  <h3 class="matchup-tray"><%= link_to a.name, '#' %></h3>
+<% end %>
+<h2>
+  <%= link_to "It's a tossup", '#' %>
+</h2>
 
-    <h2>
-      <%= link_to 'It\'s a tossup', '#' %>
-    </h2>
-
-    <h3>
-    Player1's rating: <%= @player1.rating %>
-    <br>
-    Player2's rating: <%= @player2.rating %>
-    </h3>
-    
-    <div>
-      Go <%= link_to "Home", root_path %>
-    </div>
-
-  </body>
-</html>
+<h3>
+  Go <%= link_to "Home", root_path %>
+</h3>

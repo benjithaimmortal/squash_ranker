@@ -17,18 +17,11 @@ class AthletesController < ApplicationController
   def matchup
     # choose two athletes at random
     @athletes = Athlete.order("RANDOM()").limit(2)
-    @player1 = @athletes[0]
-    @player2 = @athletes[1]
-
-    if @athlete.update(athlete_params)
-      redirect_back(index_path)
-    else
-      render 'matchup'
-    end
-  end
+  end  
 
   def show
     @athlete = Athlete.find(params[:id])
+    rate(@athlete)
   end
 
   def create
@@ -53,9 +46,8 @@ class AthletesController < ApplicationController
     @athlete = Athlete.find(params[:id])
 
     # update the rating with edited positive/negative score
-    @athlete.rating = rate(@athlete)
-   
     if @athlete.update(athlete_params)
+      @athlete.rating = rate(@athlete)
       redirect_to @athlete
     else
       render 'edit'
@@ -72,19 +64,28 @@ class AthletesController < ApplicationController
   def new
   end
 
+  def rating_up(a)
+    a.increment_counter(:positive)
+    a.save
+    redirect_back(matchup_path)
+  end
+
+
   private
 
   def athlete_params
     params.require(:athlete).permit(:name, :level, :positive, :negative) if params[:athlete]
   end
 
-
   #upvotes/downvotes rating system
   def rate(athlete)
     positive = athlete.positive
     negative = athlete.negative
-    athlete.rating = (positive - negative)
-    
+    if athlete.negative == 0
+      athlete.rating == athlete.positive
+    else
+      athlete.rating = (positive / negative)
+    end
     # ((positive + 1.9208) / (positive + negative) - 1.96 * Math.sqrt((positive * negative) / (positive + negative) + 0.9604) / (positive + negative)) / (1 + 3.8416 / (positive + negative))
   end
 

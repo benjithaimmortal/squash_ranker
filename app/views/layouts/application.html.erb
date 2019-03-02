@@ -2,6 +2,16 @@
 <html>
   <head>
     <title><%= yield(:title) %> | Squash Ranker</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-418311-4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-418311-4');
+    </script>
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
         <!-- seo meta -->
@@ -24,7 +34,14 @@
 	<a href="https://monjibram.com" target="_blank" class="navbar-site-emblem">
 		<i class="fa fa-behance-square fa-lg"></i>nji
 	</a>
-	<div class="dropdown">
+	
+  <div class="big-nav">
+    <div class="nav-links"><%= link_to "Home", root_path %></div>
+    <div class="nav-links"><%= link_to "Matchups", matchup_path %></div>
+    <div class="nav-links"><%= link_to "Results", index_path %></div>
+  </div>
+  
+  <div class="dropdown">
 		<div class="fa fa-bars fa-lg dropdown-nav"></div>
 		<ul class="dropdown-items">
       <li class="drop-btn"><%= link_to "Home",      root_path %></li>
@@ -35,14 +52,12 @@
 </header>
 
 
-  <body>
-    <div class="bgimg-1">
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
-      <%= yield %>
-    </div>
-  </body>
+  <div class="content">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+    <%= yield %>
+  </div>
 
   <footer class="footer">
     Here's some other stuff I didn't do yet.

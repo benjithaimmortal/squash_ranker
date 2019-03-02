@@ -21,24 +21,24 @@
 # end
 
 # sub list
-seed_list = [
-  [ "PARE, HUBERT", 1 ],
-  [ "LEE, JB", 2 ],  
-  [ "GOT, MATTHIEU", 2 ],
-  [ "CHANG, JAEHO", 2 ],
-  [ "SHIPP, ALEX", 2 ],
-  [ "PARK, ANDREW", 3 ],  
-  [ "HAN, DAVID", 3 ],
-  [ "LEE, SOPHIA", 3 ],
-  [ "KHALIL, UMAER", 4 ],  
-  [ "DELANEY, DAMIAN", 4 ],
-  [ "EUH, JAE", 4 ],
-  [ "LEE, BRIAN", 5 ],
-  [ "NORTHRUP, GREG", 5 ],
-  [ "VICKERY, BEN", 5 ],
-  [ "FLYNN, JOE", 5 ],
-  [ "LEE, HEEWON", 5 ]
-]
+# seed_list = [
+#   [ "PARE, HUBERT", 1 ],
+#   [ "LEE, JB", 2 ],  
+#   [ "GOT, MATTHIEU", 2 ],
+#   [ "CHANG, JAEHO", 2 ],
+#   [ "SHIPP, ALEX", 2 ],
+#   [ "PARK, ANDREW", 3 ],  
+#   [ "HAN, DAVID", 3 ],
+#   [ "LEE, SOPHIA", 3 ],
+#   [ "KHALIL, UMAER", 4 ],  
+#   [ "DELANEY, DAMIAN", 4 ],
+#   [ "EUH, JAE", 4 ],
+#   [ "LEE, BRIAN", 5 ],
+#   [ "NORTHRUP, GREG", 5 ],
+#   [ "VICKERY, BEN", 5 ],
+#   [ "FLYNN, JOE", 5 ],
+#   [ "LEE, HEEWON", 5 ]
+# ]
 
 # regular players
 # seed_list = [

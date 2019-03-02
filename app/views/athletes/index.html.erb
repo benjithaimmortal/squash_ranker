@@ -11,18 +11,14 @@
           <td>Votes</td>
         </tr>
       </thead>
-      <tbody>      
+      <tbody>
         <% @athletes.each do |a| %>
         <tr>
-          <td><%= a.name %></td>
+          <td><%= a.name.titleize %></td>
           <td><%= a.level %></td>
           <td><%= a.rating %></td>
-          <td><%= a.positive %></td>
+          <td><%= (a.positive + a.negative) %></td>
           <td><%= link_to 'View', athlete_path(a) %>
-          <td><%= link_to 'Edit', edit_athlete_path(a) %>
-          <td><%= link_to "Delete", athlete_path(a),
-                    method: :delete,
-                    data: { confirm: 'Are you sure? This will reset the player\'s rank.' } %>
         </tr>
         <% end %>
       </tbody>

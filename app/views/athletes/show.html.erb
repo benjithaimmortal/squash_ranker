@@ -3,17 +3,17 @@
   <h1>
     Name: <%= @athlete.name %>
   </h1>
-  <h3>
+  <h3 class="show-tray">
     Level: <%= @athlete.level %>
   </h3>
-  <h3>
+  <h3 class="show-tray">
+    Rating: <%= @athlete.rating %>
+  </h3>
+  <h3 class="show-tray">
     Positive: <%= @athlete.positive %>
   </h3>
-  <h3>
+  <h3 class="show-tray">
     Negative: <%= @athlete.negative %>
-  </h3>
-  <h3>
-    Rating: <%= @athlete.rating %>
   </h3>
   <br>
   <%= link_to "Edit User", edit_athlete_path(@athlete.id) %>
