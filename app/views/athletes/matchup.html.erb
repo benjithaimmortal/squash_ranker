@@ -1,19 +1,16 @@
 <% provide(:title, "Matchup!") %>
-<!DOCTYPE html>
 
 <h2>
   Who wins?
   <br>
 </h2>
 <% @athletes.each do |a| %>
-  <h3 class="matchup-tray">
-    <%= link_to a.name, rating_up_athlete_url(a), :method => :put, remote: true %>
-    <% @ids = [] %>
-    <% @ids << a.id %>
-  </h3>
+  <h1 class="matchup-tray">
+    <%= link_to a.name.titleize, rating_up_athlete_url(a), :method => :put, remote: true %>
+  </h1>
 <% end %>
 <h2>
-  <%= link_to "It's a tossup", tossup_athlete_url(@ids), :method => :put %>
+  <%= link_to "It's a tossup", matchup_path %>
 </h2>
 
 <h3>

@@ -28,6 +28,10 @@ class AthletesController < ApplicationController
   end
 
   def tossup
+    @athletes.each do |a|
+      a.increment! :negative
+      a.save
+    end
     flash[:notice] = "Whew, nail-biter!"
     redirect_to matchup_path
   end
