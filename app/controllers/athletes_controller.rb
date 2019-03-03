@@ -17,8 +17,32 @@ class AthletesController < ApplicationController
   def matchup
     # choose two athletes at random
     @athletes = Athlete.order("RANDOM()").limit(2)
-  end  
+    @player1 = @athletes[0]
+    @player2 = @athletes[1]
+  end
 
+  def rating_up
+    @athlete = Athlete.find(params[:id])
+    @athlete.increment! :positive
+    @athlete.save
+    flash[:notice] = "CLAYTALITY"
+    redirect_to matchup_path
+  end
+
+  def tossup(a, b)
+    # player 1
+    a = Athlete.find(params[:id])
+    a.increment! :negative
+    a.save
+    # player 2
+    b = Athlete.find(params[:id])
+    b.increment! :negative
+    b.save
+
+    flash[:notice] = "Whew, nail-biter!"
+    redirect_to matchup_path
+  end
+  
   def show
     @athlete = Athlete.find(params[:id])
     rate(@athlete)
@@ -63,13 +87,6 @@ class AthletesController < ApplicationController
 
   def new
   end
-
-  def rating_up(a)
-    a.increment_counter(:positive)
-    a.save
-    redirect_back(matchup_path)
-  end
-
 
   private
 

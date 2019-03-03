@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 # Enable resources for the Athletes in the database
   resources :athletes do
     member do
-      put :rating_up
+      put 'rating_up', 'tossup'
     end
   end
 
