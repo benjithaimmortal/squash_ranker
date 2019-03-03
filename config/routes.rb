@@ -16,7 +16,8 @@ Rails.application.routes.draw do
 # Old
   get 'results'  => 'dynamic_pages#results'
 
-# Enable resources for the Athletes in the database
+# Enable resources for the Athletes in the database,
+# including PUT methods for incrementing Positive and Negative
   resources :athletes do
     member do
       put 'rating_up', 'tossup'

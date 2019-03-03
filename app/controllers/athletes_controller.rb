@@ -17,28 +17,17 @@ class AthletesController < ApplicationController
   def matchup
     # choose two athletes at random
     @athletes = Athlete.order("RANDOM()").limit(2)
-    @player1 = @athletes[0]
-    @player2 = @athletes[1]
   end
 
   def rating_up
     @athlete = Athlete.find(params[:id])
     @athlete.increment! :positive
     @athlete.save
-    flash[:notice] = "CLAYTALITY"
+    flash[:notice] = "CLAYTALITY!"
     redirect_to matchup_path
   end
 
-  def tossup(a, b)
-    # player 1
-    a = Athlete.find(params[:id])
-    a.increment! :negative
-    a.save
-    # player 2
-    b = Athlete.find(params[:id])
-    b.increment! :negative
-    b.save
-
+  def tossup
     flash[:notice] = "Whew, nail-biter!"
     redirect_to matchup_path
   end
@@ -54,10 +43,10 @@ class AthletesController < ApplicationController
     @athlete.negative ||= 0
 
     if @athlete.save
-      flash.now[:success] = "Player added successfully"
+      flash.now[:notice] = "Player added successfully"
       redirect_to @athlete
     else
-      # flash.now[:error] = "Player not added"
+      flash.now[:error] = "Player not added"
       render 'create'
     end
   end
@@ -72,6 +61,7 @@ class AthletesController < ApplicationController
     # update the rating with edited positive/negative score
     if @athlete.update(athlete_params)
       @athlete.rating = rate(@athlete)
+      flash.now[:notice] = "Player added successfully"
       redirect_to @athlete
     else
       render 'edit'
@@ -98,12 +88,12 @@ class AthletesController < ApplicationController
   def rate(athlete)
     positive = athlete.positive
     negative = athlete.negative
-    if athlete.negative == 0
-      athlete.rating == athlete.positive
-    else
-      athlete.rating = (positive / negative)
-    end
-    # ((positive + 1.9208) / (positive + negative) - 1.96 * Math.sqrt((positive * negative) / (positive + negative) + 0.9604) / (positive + negative)) / (1 + 3.8416 / (positive + negative))
+    # what I have
+    athlete.rating = positive / negative
+
+    # what I want
+    # athlete.rating = ((positive + 1.9208) / (positive + negative) - 1.96 * (Math.sqrt((positive * negative) / (positive + negative) + 0.9604) / (positive + negative)) / (1 + 3.8416 / (positive + negative)))
+    # athlete.save
   end
 
   def sort_column

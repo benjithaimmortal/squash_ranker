@@ -5,16 +5,19 @@
   Who wins?
   <br>
 </h2>
-<h3 class="matchup-tray">
-  <%= link_to @player1.name, rating_up_athlete_url(@player1), :method => :put, remote: true %>
-</h3>
-<h3 class="matchup-tray">
-  <%= link_to @player2.name, rating_up_athlete_url(@player2), :method => :put, remote: true %>
-</h3>
+<% @athletes.each do |a| %>
+  <h3 class="matchup-tray">
+    <%= link_to a.name, rating_up_athlete_url(a), :method => :put, remote: true %>
+    <% @ids = [] %>
+    <% @ids << a.id %>
+  </h3>
+<% end %>
 <h2>
-  <%= link_to "It's a tossup", tossup_athlete_url(@player1, @player2), :method => :put, remote: true %>
+  <%= link_to "It's a tossup", tossup_athlete_url(@ids), :method => :put %>
 </h2>
 
 <h3>
+  View <%= link_to "Results", index_path %>
+  <br>
   Go <%= link_to "Home", root_path %>
 </h3>

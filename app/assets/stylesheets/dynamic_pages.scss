@@ -17,20 +17,27 @@ body, html {
   color: #777;
 }
 
+.alert-box {
+  display: flex;
+}
+
 .alert {
   border-style: dotted;
   border-width: 2px;
+  display: inline-block;
+  padding: 0 15px;
+  
+  &.alert-notice {
+    border-color: #777118;
+    color: #777118;
+  }
+  
+  &.alert-error {
+    border-color: red;
+    color: red;
+  }  
 }
 
-.alert-success {
-  border: #263238;
-  color: whitesmoke;
-}
-
-.alert-error {
-  border: red;
-  color: whitesmoke;
-}
 
 a {
   &:link {
