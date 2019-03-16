@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       put 'rating_up'
       get 'rating_up'
       put 'tossup'
+      get 'tossup'
     end
   end
 
