@@ -19,7 +19,7 @@ class AthletesController < ApplicationController
   end
 
   def rating_up
-    @athlete = Athlete.find(params[:id])
+    find_athlete
     @athlete.increment! :positive
     @athlete.save
     flash[:notice] = "CLAYTALITY!"
@@ -37,7 +37,7 @@ class AthletesController < ApplicationController
   end
   
   def show
-    @athlete = Athlete.find(params[:id])
+    find_athlete
     rate(@athlete)
   end
 
@@ -56,11 +56,11 @@ class AthletesController < ApplicationController
   end
 
   def edit
-    @athlete = Athlete.find(params[:id])
+    find_athlete
   end
 
   def update
-    @athlete = Athlete.find(params[:id])
+    find_athlete
 
     # update the rating with edited positive/negative score
     if @athlete.update(athlete_params)
@@ -73,7 +73,7 @@ class AthletesController < ApplicationController
   end
 
   def destroy
-    @athlete = Athlete.find(params[:id])
+    find_athlete
     @athlete.destroy
 
     redirect_to athletes_path
@@ -86,6 +86,11 @@ class AthletesController < ApplicationController
 
   def athlete_params
     params.require(:athlete).permit(:name, :level, :positive, :negative) if params[:athlete]
+  end
+
+  #DRY out commonly typed code
+  def find_athlete
+    @athlete = Athlete.find(params[:id])
   end
 
   #upvotes/downvotes rating system
