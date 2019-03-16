@@ -7,7 +7,7 @@
 <% @athlete_array = [] %>
 <% @athletes.each do |a| %>
   <h1 class="matchup-tray">
-    <%= link_to a.name.titleize, rating_up_athlete_url(a), :method => :put %>
+    <%= link_to "#{a.name.titleize} (#{a.level})", rating_up_athlete_url(a), :method => :put %>
   </h1>
   <% @athlete_array.push(a) %>
 <% end %>
