@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
 # Matchup!
   get 'matchup' => 'athletes#matchup'
+  get 'rating_up' => 'athletes#rating_up'
 
 # Deprecated Results
   get 'results'  => 'dynamic_pages#results'
