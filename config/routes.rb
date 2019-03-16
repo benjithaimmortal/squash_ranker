@@ -14,13 +14,13 @@ Rails.application.routes.draw do
   resources :athletes do
     member do
       put 'rating_up'
+      get 'rating_up'
       put 'tossup'
     end
   end
 
 # Matchup!
   get 'matchup' => 'athletes#matchup'
-  get 'rating_up' => 'athletes#rating_up'
 
 # Deprecated Results
   get 'results'  => 'dynamic_pages#results'
