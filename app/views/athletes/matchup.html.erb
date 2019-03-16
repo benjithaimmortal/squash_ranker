@@ -4,13 +4,15 @@
   Who wins?
   <br>
 </h2>
+<% @athlete_array = [] %>
 <% @athletes.each do |a| %>
   <h1 class="matchup-tray">
-    <%= link_to a.name.titleize, rating_up_athlete_url(a), :method => :put, remote: true %>
+    <%= link_to a.name.titleize, rating_up_athlete_url(a), :method => :put %>
   </h1>
+  <% @athlete_array.push(a) %>
 <% end %>
 <h2>
-  <%= link_to "It's a tossup", matchup_path %>
+  <%= link_to "It's a tossup", tossup_athlete_url(@athlete_array), :method => :put %>
 </h2>
 
 <h3>

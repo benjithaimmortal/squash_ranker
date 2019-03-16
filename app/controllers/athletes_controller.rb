@@ -4,7 +4,7 @@ class AthletesController < ApplicationController
 
   # creates a generic admin account for managing the database from the app
   http_basic_authenticate_with name: "admin", password: "squashrulez",
-      except: [:index, :show, :matchup]
+      except: [:index, :show, :matchup, :rating_up, :tossup]
 
   def index
     @athletes = Athlete.order(sort_column + " " + sort_direction)
@@ -13,7 +13,6 @@ class AthletesController < ApplicationController
     @athletes.each { |a| rate(a) }
   end
 
-  #check out that PG!
   def matchup
     # choose two athletes at random
     @athletes = Athlete.order("RANDOM()").limit(2)
@@ -28,7 +27,8 @@ class AthletesController < ApplicationController
   end
 
   def tossup
-    @athletes.each do |a|
+    @athlete_array.each do |a|
+      a = Athlete.find(params[:id])
       a.increment! :negative
       a.save
     end

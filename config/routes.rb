@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   # including PUT methods for incrementing Positive and Negative
   resources :athletes do
     member do
-      put 'rating_up', 'tossup'
+      put 'rating_up'
+      put 'tossup'
     end
   end
 
